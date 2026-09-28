@@ -47,10 +47,10 @@ app.post("/api/contact", async (req, res) => {
   const rows = requiredFields.map((field) => `${field}: ${values[field]}`).join("\n");
   try {
     await transporter.sendMail({
-      from: `Website Contact <${process.env.SMTP_USER}>`,
+      from: `Website Enquiry <${process.env.SMTP_USER}>`,
       to: recipient,
       replyTo: values.email,
-      subject: `Website contact from ${values.name}`,
+      subject: `Website Enquiry from ${values.name}`,
       text: `A new contact form submission was received.\n\n${rows}`,
       html: `<h2>New contact form submission</h2><table>${requiredFields
         .map((field) => `<tr><th align="left" style="padding:4px 12px 4px 0">${field}</th><td>${escapeHtml(values[field])}</td></tr>`)
